@@ -9,6 +9,11 @@
 ;(function(exports) {
 	'use strict';
 	
+	/**
+	 * Watches the URLs hash for changes and merges those changes with an existing object
+	 * Allowing storage of complex data in a sharable URL
+	 * The data can be accessed via the data property, i.e. `hashStorageInstance.data.foo`
+	 */
 	function HashStorage() {
 		// Setup the events that wait for the hash to change
 		this.addEvents();
@@ -17,6 +22,10 @@
 		this.parseHash();
 	}
 	
+	/**
+	 * Attaches the events to the window object that fire when the hash changes
+	 * Can be removed with the removeEvents method
+	 */
 	HashStorage.prototype.addEvents = function() {
 		// Initialise variables
 		var self = this;
@@ -32,6 +41,9 @@
 		exports.addEventListener('hashchange', self.hashChangeListener);
 	};
 	
+	/**
+	 * Removes the events set by the addEvents method
+	 */
 	HashStorage.prototype.removeEvents = function() {
 		// Remove the listener if present
 		if(this.hashChangeListener) {
@@ -39,6 +51,12 @@
 		}
 	};
 	
+	/**
+	 * Returns the result of decoding the URLs hash as JSON
+	 * If the JSON is invalid or the hash is nothing like JSON then it will return false
+	 * 
+	 * @return {Object|Boolean} Either the decoded hash object or false if no object could be decoded
+	 */
 	HashStorage.prototype.getHash = function() {
 		// Initialise variables
 		var hash = null;
@@ -55,6 +73,12 @@
 		return hash;
 	};
 	
+	/**
+	 * Checks if an object is empty
+	 * 
+	 * @param {Object} obj The object to check
+	 * @return {Boolean} True if the object is empty, false if not
+	 */
 	HashStorage.prototype.isEmpty = function(obj) {
 		// Initialise variables
 		var key = null;
@@ -71,6 +95,11 @@
 		return true;
 	};
 	
+	/**
+	 * Encodes the passed object into JSON and sets the URLs hash to it
+	 * 
+	 * @param {Object} hash Your data to store in the hash as JSON
+	 */
 	HashStorage.prototype.setHash = function(hash) {
 		// If the data object is not an empty store it
 		if(!this.isEmpty(hash)) {
@@ -78,6 +107,10 @@
 		}
 	};
 	
+	/**
+	 * Fetches and parses the hash, merges any hash changes into the data object
+	 * Will be run every time the hash changes unless the event listener is removed
+	 */
 	HashStorage.prototype.parseHash = function() {
 		// Initialise variables
 		var hash = null;
@@ -104,6 +137,13 @@
 		this.setHash(this.data);
 	};
 	
+	/**
+	 * Merges one object into another
+	 * Will recurse on objects to allow specific property setting but completely replace all other variable types
+	 * 
+	 * @param {Object} from Object containing the new properties to copy in
+	 * @param {Object} to The base object to copy the properties into
+	 */
 	HashStorage.prototype.merge = function(from, to) {
 		// Initialise variables
 		var key = null;
