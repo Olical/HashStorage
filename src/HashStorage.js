@@ -55,7 +55,7 @@
 		return hash;
 	};
 	
-	HashStorage.prototype.empty = function(obj) {
+	HashStorage.prototype.isEmpty = function(obj) {
 		// Initialise variables
 		var key = null;
 		
@@ -73,7 +73,7 @@
 	
 	HashStorage.prototype.setHash = function(hash) {
 		// If the data object is not an empty store it
-		if(!this.empty(hash)) {
+		if(!this.isEmpty(hash)) {
 			exports.location.hash = '#' + JSON.stringify(hash);
 		}
 	};
