@@ -1,4 +1,6 @@
-HashStorage is a small JavaScript class that allows you to store complex data in the URLs hash. So you could link someone to this page and instantly point the users browser at the correct slide and scroll position.
+# HashStorage
+
+A small JavaScript class that allows you to store complex data in the URLs hash. So you could link someone to this page and instantly point the users browser at the correct slide and scroll position.
 
     http://yoursite.co.uk/slideshow#{"page":3,"scrollX":324}
 
@@ -20,7 +22,7 @@ As you can see, I have also included a `scollX` property in that example URL. To
 
 *Documentation and testing is still a work in progress, this is basically the alpha release.*
 
-# License
+## License
 
 [![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)](http://creativecommons.org/licenses/by/3.0/)
 
