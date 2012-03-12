@@ -72,7 +72,7 @@
 			// Check for a hash object
 			// If there is some data merge it with the current object
 			if(hash) {
-				this.mergeData(hash, this.data);
+				this.merge(hash, this.data);
 			}
 		}
 		else {
@@ -82,7 +82,7 @@
 		}
 	};
 	
-	HashStorage.prototype.mergeData = function(from, to) {
+	HashStorage.prototype.merge = function(from, to) {
 		// Initialise variables
 		var key = null;
 		
