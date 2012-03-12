@@ -57,7 +57,7 @@
 	
 	HashStorage.prototype.setHash = function(hash) {
 		// Store the passed object
-		exports.location.hash = '#' + JSON.parse(hash);
+		exports.location.hash = '#' + JSON.stringify(hash);
 	};
 	
 	HashStorage.prototype.parseHash = function() {
