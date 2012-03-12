@@ -83,7 +83,7 @@
 		
 		// Because any merging has been completed we need to set the hash to the current data
 		// This allows copying of the URL with the persistent hash based object
-		this.setHash(hash);
+		this.setHash(this.data);
 	};
 	
 	HashStorage.prototype.merge = function(from, to) {
