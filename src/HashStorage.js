@@ -57,7 +57,7 @@
 	
 	HashStorage.prototype.setHash = function(hash) {
 		// Store the passed object
-		exports.location.hash = JSON.parse(hash);
+		exports.location.hash = '#' + JSON.parse(hash);
 	};
 	
 	HashStorage.prototype.parseHash = function() {
@@ -80,6 +80,10 @@
 			// Store either the hash or empty object
 			this.data = hash || {};
 		}
+		
+		// Because any merging has been completed we need to set the hash to the current data
+		// This allows copying of the URL with the persistent hash based object
+		this.setHash(hash);
 	};
 	
 	HashStorage.prototype.merge = function(from, to) {
