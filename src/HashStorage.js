@@ -55,9 +55,27 @@
 		return hash;
 	};
 	
+	HashStorage.prototype.empty = function(obj) {
+		// Initialise variables
+		var key = null;
+		
+		// Loop over the object
+		// Return false if there is anything in it
+		for(key in obj) {
+			if(obj.hasOwnProperty(key)) {
+				return false;
+			}
+		}
+		
+		// Return true if it is empty
+		return true;
+	};
+	
 	HashStorage.prototype.setHash = function(hash) {
-		// Store the passed object
-		exports.location.hash = '#' + JSON.stringify(hash);
+		// If the data object is not an empty store it
+		if(!this.empty(hash)) {
+			exports.location.hash = '#' + JSON.stringify(hash);
+		}
 	};
 	
 	HashStorage.prototype.parseHash = function() {
@@ -100,7 +118,7 @@
 				}
 				else {
 					// If the destination does not contain the object initialise it
-					if(typeof to[key] === 'undefined') {
+					if(typeof to[key] !== 'object') {
 						to[key] = {};
 					}
 					
