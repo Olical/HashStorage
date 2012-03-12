@@ -7,6 +7,7 @@
  */
 
 ;(function(exports) {
+	/*jshint smarttabs:true*/
 	'use strict';
 	
 	/**
