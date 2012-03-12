@@ -1,3 +1,11 @@
+/**
+ * HashStorage v0.0.0
+ * https://github.com/Wolfy87/HashStorage
+ * 
+ * Oliver Caldwell (http://oli.me.uk)
+ * Creative Commons Attribution 3.0 Unported License (http://creativecommons.org/licenses/by/3.0/)
+ */
+
 ;(function(exports) {
 	'use strict';
 	
