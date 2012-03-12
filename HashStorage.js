@@ -109,6 +109,18 @@
 	};
 	
 	/**
+	 * Store data back into the hash object manually
+	 * So when you need to update something without the user having to click something
+	 * I.e. a counter or page scroll position, something programmatic
+	 * 
+	 * @param {Object} data Your custom data object to merge into the hash
+	 */
+	HashStorage.prototype.set = function(data) {
+		this.merge(data, this.data);
+		this.setHash(this.data);
+	};
+	
+	/**
 	 * Fetches and parses the hash, merges any hash changes into the data object
 	 * Will be run every time the hash changes unless the event listener is removed
 	 */
