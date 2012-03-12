@@ -95,7 +95,13 @@
 					to[key] = from[key];
 				}
 				else {
+					// If the destination does not contain the object initialise it
+					if(typeof to[key] === 'undefined') {
+						to[key] = {};
+					}
 					
+					// Recurse with the deeper object
+					this.merge(from[key], to[key]);
 				}
 			}
 		}
