@@ -27,6 +27,17 @@ As you can see, I have also included a `scollX` property in that example URL. To
 There are a couple of ways to load HashStorage. The first and most obvious is to point a script tag at it.
 
 	<script type='text/javascript' src='/assets/javascript/HashStorage.min.js'></script>
+	<script type='text/javascript'>
+		var hs = new HashStorage();
+	</script>
+
+You can also load the script via AMD with [RequireJS](http://requirejs.org/) for example.
+
+	define(['HashStorage'], function(HashStorage) {
+		var hs = new HashStorage();
+	});
+
+As you can see I am also creating an instance of `HashStorage` when it is loaded, this is required for it to function. When you create an instance all of the required events are registered with the browser.
 
 ## License
 
