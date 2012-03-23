@@ -8,6 +8,7 @@
 
 ;(function(exports) {
 	/*jshint smarttabs:true*/
+	/*global define*/
 	'use strict';
 	
 	/**
@@ -184,4 +185,11 @@
 	
 	// Expose the class
 	exports.HashStorage = HashStorage;
+	
+	// Allow AMD
+	if(typeof define === 'function' && define.amd) {
+		define(function() {
+			return HashStorage;
+		});
+	}
 }(this));
