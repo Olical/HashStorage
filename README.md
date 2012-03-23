@@ -56,6 +56,17 @@ If a user clicks both of these links then the hash object will contain both vari
 
 A user can click the first and then the second links. The volume will stay the same but the file will be overwritten.
 
+### Manipulating with JavaScript
+
+Sometimes you may want to update the hash programmatically, such as when the user scrolls or a video finishes. You can do this easily with the `set` method. It works exactly the same as the link method so the objects will be merged not overwritten. The following example assumes that you have already created an instance of `HashStorage` called `hs`.
+
+	// Change the volume from the previous example
+	hs.set({
+		music: {
+			volume: 8
+		}
+	});
+
 ## License
 
 [![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)](http://creativecommons.org/licenses/by/3.0/)
