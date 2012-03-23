@@ -20,7 +20,13 @@ As you can see, I have also included a `scollX` property in that example URL. To
 		scrollX: currentScrollPosition
 	});
 
-*Documentation and testing is still a work in progress, this is basically the alpha release.*
+## Documentation
+
+### Loading
+
+There are a couple of ways to load HashStorage. The first and most obvious is to point a script tag at it.
+
+	<script type='text/javascript' src='/assets/javascript/HashStorage.min.js'></script>
 
 ## License
 
