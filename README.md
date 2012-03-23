@@ -67,6 +67,12 @@ Sometimes you may want to update the hash programmatically, such as when the use
 		}
 	});
 
+### Accessing the stored data
+
+To access the hash object simply use the data property. So assuming you have created an instance of `HashStorage` called `hs`, you can access data from the above examples like so.
+
+	var volume = hs.data.music.volume;
+
 ## License
 
 [![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)](http://creativecommons.org/licenses/by/3.0/)
