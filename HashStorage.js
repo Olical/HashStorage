@@ -1,5 +1,5 @@
 /**
- * HashStorage v0.0.0
+ * HashStorage v0.0.1
  * https://github.com/Wolfy87/HashStorage
  * 
  * Oliver Caldwell (http://oli.me.uk)
