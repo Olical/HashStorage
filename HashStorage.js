@@ -13,6 +13,9 @@
 	
 	/**
 	 * Adds an event listener with the correct function
+	 * 
+	 * @param {String} e The event name
+	 * @param {Function} listener The listener function
 	 */
 	function addListener(e, listener) {
 		if(exports.addEventListener) {
@@ -25,8 +28,11 @@
 	
 	/**
 	 * Removes an event listener with the correct function
+	 * 
+	 * @param {String} e The event name
+	 * @param {Function} listener The listener function
 	 */
-	function removeListener() {
+	function removeListener(e, listener) {
 		if(exports.removeEventListener) {
 			exports.removeEventListener(e, listener);
 		}
