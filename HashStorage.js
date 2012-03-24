@@ -12,6 +12,30 @@
 	'use strict';
 	
 	/**
+	 * Adds an event listener with the correct function
+	 */
+	function addListener(e, listener) {
+		if(exports.addEventListener) {
+			exports.addEventListener(e, listener);
+		}
+		else {
+			exports.attachEvent('on' + e, listener);
+		}
+	}
+	
+	/**
+	 * Removes an event listener with the correct function
+	 */
+	function removeListener() {
+		if(exports.removeEventListener) {
+			exports.removeEventListener(e, listener);
+		}
+		else {
+			exports.detachEvent('on' + e, listener);
+		}
+	}
+	
+	/**
 	 * Watches the URLs hash for changes and merges those changes with an existing object
 	 * Allowing storage of complex data in a sharable URL
 	 * The data can be accessed via the data property, i.e. `hashStorageInstance.data.foo`
@@ -40,7 +64,7 @@
 		};
 		
 		// Scan the hash for JSON commands when it changes
-		exports.addEventListener('hashchange', self.hashChangeListener);
+		addListener('hashchange', self.hashChangeListener);
 	};
 	
 	/**
@@ -49,7 +73,7 @@
 	HashStorage.prototype.removeEvents = function() {
 		// Remove the listener if present
 		if(this.hashChangeListener) {
-			exports.removeEventListener('hashchange', this.hashChangeListener);
+			removeListener('hashchange', this.hashChangeListener);
 		}
 	};
 	
