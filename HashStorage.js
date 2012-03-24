@@ -213,13 +213,16 @@
 		}
 	};
 	
-	// Expose the class
-	exports.HashStorage = HashStorage;
-	
-	// Allow AMD
+	// Expose the class for AMD, CommonJS and browsers
 	if(typeof define === 'function' && define.amd) {
 		define(function() {
 			return HashStorage;
 		});
+	}
+	else if(typeof module === 'object') {
+		module.exports = HashStorage;
+	}
+	else {
+		exports.HashStorage = HashStorage;
 	}
 }(this));
