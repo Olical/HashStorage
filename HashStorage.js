@@ -1,5 +1,5 @@
 /**
- * HashStorage v0.0.1
+ * HashStorage v1.0.0
  * https://github.com/Wolfy87/HashStorage
  * 
  * Oliver Caldwell (http://oli.me.uk)
@@ -8,8 +8,38 @@
 
 ;(function(exports) {
 	/*jshint smarttabs:true*/
-	/*global define*/
+	/*global define,module*/
 	'use strict';
+	
+	/**
+	 * Adds an event listener with the correct function
+	 * 
+	 * @param {String} e The event name
+	 * @param {Function} listener The listener function
+	 */
+	function addListener(e, listener) {
+		if(exports.addEventListener) {
+			exports.addEventListener(e, listener);
+		}
+		else {
+			exports.attachEvent('on' + e, listener);
+		}
+	}
+	
+	/**
+	 * Removes an event listener with the correct function
+	 * 
+	 * @param {String} e The event name
+	 * @param {Function} listener The listener function
+	 */
+	function removeListener(e, listener) {
+		if(exports.removeEventListener) {
+			exports.removeEventListener(e, listener);
+		}
+		else {
+			exports.detachEvent('on' + e, listener);
+		}
+	}
 	
 	/**
 	 * Watches the URLs hash for changes and merges those changes with an existing object
@@ -40,7 +70,7 @@
 		};
 		
 		// Scan the hash for JSON commands when it changes
-		exports.addEventListener('hashchange', self.hashChangeListener);
+		addListener('hashchange', self.hashChangeListener);
 	};
 	
 	/**
@@ -49,7 +79,7 @@
 	HashStorage.prototype.removeEvents = function() {
 		// Remove the listener if present
 		if(this.hashChangeListener) {
-			exports.removeEventListener('hashchange', this.hashChangeListener);
+			removeListener('hashchange', this.hashChangeListener);
 		}
 	};
 	
@@ -183,13 +213,16 @@
 		}
 	};
 	
-	// Expose the class
-	exports.HashStorage = HashStorage;
-	
-	// Allow AMD
+	// Expose the class for AMD, CommonJS and browsers
 	if(typeof define === 'function' && define.amd) {
 		define(function() {
 			return HashStorage;
 		});
+	}
+	else if(typeof module === 'object') {
+		module.exports = HashStorage;
+	}
+	else {
+		exports.HashStorage = HashStorage;
 	}
 }(this));

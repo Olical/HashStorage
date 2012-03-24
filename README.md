@@ -20,6 +20,16 @@ As you can see, I have also included a `scollX` property in that example URL. To
 		scrollX: currentScrollPosition
 	});
 
+## Compatibility
+
+HashStorage will work perfectly in all modern browsers including IE8. Any browsers older than that do not include the `hashchange` event making it basically impossible to check for without using timers.
+
+ * Firefox
+ * Chrome
+ * Safari
+ * Opera
+ * IE8+
+
 ## Documentation
 
 ### Loading
